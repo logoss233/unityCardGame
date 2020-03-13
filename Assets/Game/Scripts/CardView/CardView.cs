@@ -20,11 +20,12 @@ public class CardView : MonoBehaviour
         }
     }
     //======
-    private PlayMakerFSM playerMakerFsm;
+    public PlayMakerFSM playerMakerFsm;
     private void Awake()
     {
-        playerMakerFsm = GetComponent<PlayMakerFSM>();
+        
     }
+    
 
     public string state
     {

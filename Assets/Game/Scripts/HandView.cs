@@ -24,13 +24,12 @@ public class HandView : MonoBehaviour
     public Transform cardPlace;
     private void Update()
     {
-        
+        this.calculateCardPos();
     }
     //计算卡牌位置
     private List<CardView> calcuList = new List<CardView>();
     private void calculateCardPos()
     {
-        
         calcuList.Clear();
         for(int i = 0; i < this.cardViewList.Count; i++)
         {
@@ -40,7 +39,6 @@ public class HandView : MonoBehaviour
                 calcuList.Add(cardView);
             }
         }
-
         var num = this.calcuList.Count;
         var middleNum = num / 2;
         for (int i = 0; i < this.calcuList.Count; i++)
@@ -49,7 +47,6 @@ public class HandView : MonoBehaviour
             var x = this.centerPoint.position.x + offX;
             CardView cardView = this.cardViewList[i];
             cardView.transform.position = new Vector3(x, this.centerPoint.position.y, this.centerPoint.position.z);
-
         }
     }
 
