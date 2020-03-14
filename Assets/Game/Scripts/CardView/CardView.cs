@@ -5,27 +5,20 @@ using HutongGames.PlayMaker;
 
 public class CardView : MonoBehaviour
 {
-    //=======显示卡的前面或者背面
-    public GameObject cardFace;
-    public GameObject cardBack;
-    private bool _isFace = true;
-    public bool isFace
-    {
-        get { return this._isFace; }
-        set
-        {
-            this._isFace = value;
-            this.cardFace.SetActive(value);
-            this.cardBack.SetActive(!value);
-        }
-    }
+    public static CardView mousePosCard;//纯粹的 当前鼠标在哪张卡上
+   
+
+
     //======
     public PlayMakerFSM playerMakerFsm;
-    private void Awake()
-    {
-        
-    }
-    
+
+    //idle变量
+    public Vector3 targetPos=Vector3.zero;
+    public Vector3 targetRotiton=new Vector3(0,0,0);
+    public Vector3 targetScale=new Vector3(1,1,1);
+    public int orderInhand = 0; //在手牌中的顺序
+
+    public bool needTarget = true;//是否需要指定对象释放
 
     public string state
     {
@@ -34,5 +27,27 @@ public class CardView : MonoBehaviour
             return playerMakerFsm.ActiveStateName;
         }
     }
+    public void init()
+    {
+       
+    }
 
+    private void Update()
+    {
+       
+
+    }
+
+
+    public void onPointEnter()
+    {
+         CardView.mousePosCard = this;
+    }
+    public void onPointExit()
+    {
+        if (CardView.mousePosCard == this)
+        {
+            CardView.mousePosCard = null;
+        }
+    }
 }

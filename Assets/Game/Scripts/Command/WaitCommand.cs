@@ -18,7 +18,6 @@ public class WaitCommand : Command
 
     public override void onUpdate()
     {
-        Debug.Log("onUpdate");
         this.timer += Time.deltaTime;
         if (this.timer >= this.time)
         {
