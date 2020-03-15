@@ -12,7 +12,8 @@ public class CardViewStatePoint : FsmStateAction
     {
         transform= Owner.transform;
         cardView = Owner.GetComponent<CardView>();
-        transform.position = cardView.targetPos + new Vector3(0, 50, 0);
+        transform.position = new Vector3(cardView.targetPos.x, -210, 0);
+
         transform.rotation = Quaternion.identity;
         transform.localScale = new Vector3(2, 2, 1f);
 

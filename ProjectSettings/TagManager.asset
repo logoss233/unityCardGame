@@ -44,3 +44,6 @@ TagManager:
   - name: card
     uniqueID: 1424352767
     locked: 0
+  - name: arrow
+    uniqueID: 471522935
+    locked: 0

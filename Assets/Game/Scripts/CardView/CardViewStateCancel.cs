@@ -6,6 +6,7 @@ using DG.Tweening;
 public class CardViewStateCancel :FsmStateAction
 {
     
+
     public override void OnEnter()
     {
         var transform = Owner.transform;

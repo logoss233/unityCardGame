@@ -9,14 +9,15 @@ public class CardViewStateChoosed :FsmStateAction
 
     CardView cardView;
     Transform transform;
+
     public override void Awake()
-    {
-       
-    }
-    public override void OnEnter()
     {
         cardView = Owner.GetComponent<CardView>();
         transform = Owner.transform;
+    }
+    public override void OnEnter()
+    {
+        
     }
     public override void OnUpdate()
     {
@@ -29,7 +30,11 @@ public class CardViewStateChoosed :FsmStateAction
             HandView.instance.cancelChoose();
             return;
         }
-        
+        if (transform.position.y > HandView.instance.commitPoint.position.y)
+        {
+            Fsm.Event(this.comfirm);
+            return;
+        }
     }
     
 }

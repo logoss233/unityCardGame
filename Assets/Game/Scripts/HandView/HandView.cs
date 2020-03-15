@@ -27,7 +27,7 @@ public class HandView : MonoBehaviour
     public Transform cardPlace;
     public Transform drawCardFromPos;
     public Transform drawCardEndPos;
-    
+    public Transform commitPoint;
    
    
 
