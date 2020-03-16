@@ -14,6 +14,8 @@ public class ArrowCtl : MonoBehaviour
     {
         ArrowCtl.instance = this;
     }
+
+    
     private void Start()
     {
         //生成箭头
