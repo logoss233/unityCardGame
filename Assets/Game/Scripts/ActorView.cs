@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ActorView : MonoBehaviour
 {
+   
     public static ActorView mousePosActor;
     public void onPointEnter()
     {
@@ -16,5 +17,11 @@ public class ActorView : MonoBehaviour
             ActorView.mousePosActor = null;
         }
     }
-    //=========
+    //=======
+    public bool _isSelect = false;
+    public GameObject selectTip;
+    public bool isSelect { get { return this._isSelect; } set {
+            this._isSelect = value;
+            this.selectTip.SetActive(value);
+        } }
 }

@@ -7,7 +7,24 @@ public class CardViewStarteSelectTarget : FsmStateAction
     CardView cardView;
     Transform transform;
     public FsmEvent cancelEvent;
-    
+
+    ActorView selectActorView;
+    void set_selectActorView(ActorView actorView)
+    {
+        if (this.selectActorView == actorView)
+        {
+            return;
+        }
+        if (this.selectActorView!=null)
+        {
+            this.selectActorView.isSelect = false;
+        }
+        this.selectActorView = actorView;
+        if (this.selectActorView != null)
+        {
+            this.selectActorView.isSelect = true;
+        }
+    }
     public override void Awake()
     {
         cardView = Owner.GetComponent<CardView>();
@@ -22,6 +39,7 @@ public class CardViewStarteSelectTarget : FsmStateAction
     }
     public override void OnExit()
     {
+        this.set_selectActorView(null);
         ArrowCtl.instance.close();
     }
     public override void OnUpdate()
@@ -42,6 +60,9 @@ public class CardViewStarteSelectTarget : FsmStateAction
             this.cancel();
             return;
         }
+
+        //选中卡牌
+        this.set_selectActorView(ActorView.mousePosActor);
     }
     void cancel()
     {
