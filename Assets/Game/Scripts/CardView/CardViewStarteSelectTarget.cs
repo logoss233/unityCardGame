@@ -7,6 +7,7 @@ public class CardViewStarteSelectTarget : FsmStateAction
     CardView cardView;
     Transform transform;
     public FsmEvent cancelEvent;
+    public FsmEvent confirmEvent;
 
     ActorView selectActorView;
     void set_selectActorView(ActorView actorView)
@@ -63,6 +64,13 @@ public class CardViewStarteSelectTarget : FsmStateAction
 
         //选中卡牌
         this.set_selectActorView(ActorView.mousePosActor);
+        //确认使用
+        if(this.selectActorView!=null &&(Input.GetMouseButtonDown(0) || Input.GetMouseButtonUp(0)))
+        {
+            cardView.cardModel.use(selectActorView.actorModel);
+            this.Fsm.Event(this.confirmEvent);
+        }
+
     }
     void cancel()
     {

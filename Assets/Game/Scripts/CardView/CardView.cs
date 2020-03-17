@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using HutongGames.PlayMaker;
+using UnityEngine.UI;
 
 public class CardView : MonoBehaviour
 {
     public static CardView mousePosCard;//纯粹的 当前鼠标在哪张卡上
-   
+    public int id;
+    public CardModel cardModel;
+
+    public Text nameText;
+    public Text descriptionText;
 
 
     //======
@@ -26,10 +31,19 @@ public class CardView : MonoBehaviour
         {
             return playerMakerFsm.ActiveStateName;
         }
+        set
+        {
+            playerMakerFsm.Fsm.SetState(value);
+        }
     }
-    public void init()
+    public void init(int id)
     {
-       
+        this.id = id;
+        IDCtl.instance.addCardView(this);
+        var cardModel = IDCtl.instance.getCardModel(id);
+        this.cardModel = cardModel;
+        this.nameText.text = cardModel.name;
+        this.descriptionText.text = cardModel.description;
     }
 
     private void Update()

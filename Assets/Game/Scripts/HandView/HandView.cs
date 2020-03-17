@@ -31,12 +31,12 @@ public class HandView : MonoBehaviour
    
    
 
-    public void drawCard()
+    public void drawCard(int cardId)
     {
         var cardViewGO = Instantiate(this.CardViewPrefab, cardPlace);
         var cardView = cardViewGO.GetComponent<CardView>();
         this.cardViewList.Add(cardView);
-        cardView.init();
+        cardView.init(cardId);
        
         //重置手牌顺序
         for(var i = 0; i < this.cardViewList.Count; i++)
@@ -62,7 +62,6 @@ public class HandView : MonoBehaviour
         {
             //计算位置
             var offX = (i - middleNum) * 100;
-            print("offX" + offX);
             var x = this.centerPoint.position.x + offX;
             var offY = 50 - Mathf.Abs(i - middleNum) * 20;
             var y = this.centerPoint.position.y + offY;
@@ -74,6 +73,11 @@ public class HandView : MonoBehaviour
         }
     }
 
+    public void removeCardView(CardView cardView)
+    {
+        this.cardViewList.Remove(cardView);
+        this.calculateCardPos();
+    }
 
 
   
@@ -93,8 +97,8 @@ public class HandView : MonoBehaviour
     }
     void chooseCard(CardView cardView)
     {
-        var fsm = cardView.playerMakerFsm.Fsm;
-        fsm.SetState("point");
+        cardView.state = "point";
+       
         this.controlCard = cardView;
     }
     public void cancelChoose()
