@@ -8,7 +8,8 @@ public class CardModel
     public string name="打击";
     public string description="造成6点伤害";
     public int damage = 6;
-    public void use(ActorModel actorModel)
+
+    public virtual void use(ActorModel actorModel)
     {
         var sc = new SequenceCommand();
         

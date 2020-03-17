@@ -14,7 +14,7 @@ public class AttackAniCommand : Command
     public override void excute()
     {
         var actorView = IDCtl.instance.getActorView(this.actorId);
-        EffectAniCtl.instance.playAni(EffectAniLab.instance.attack,actorView.transform.position);
+        EffectAniCtl.instance.playAni(EffectAniLab.instance.claw,actorView.transform.position);
         runCommand(new WaitCommand(0.3f), () =>
         {
             runCommand(sc, () => {

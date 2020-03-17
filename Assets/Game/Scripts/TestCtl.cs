@@ -8,11 +8,6 @@ public class TestCtl : MonoBehaviour
     public ActorView actorView2;
     private void Start()
     {
-
-
-     
-
-
         var actorModel2 = new ActorModel();
         actorModel2.id = IDCtl.instance.getId();
         actorModel2.hp = 60;
@@ -27,15 +22,29 @@ public class TestCtl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             //模拟抽卡
-            var id = IDCtl.instance.getId();
-            var cardModel = new CardModel();
-            cardModel.id = id;
-            cardModel.name = "card" + id;
-            cardModel.damage =(int)Random.Range(3, 8);
-            cardModel.description = "造成" + cardModel.damage + "点伤害";
-            IDCtl.instance.addCardModel(cardModel);
+            if (Mathf.Floor(Random.value * 2) == 0)
+            {
+                var id = IDCtl.instance.getId();
+                var cardModel = new CardModel();
+                cardModel.id = id;
+                cardModel.name = "card" + id;
+                cardModel.damage = (int)Random.Range(3, 8);
+                cardModel.description = "造成" + cardModel.damage + "点伤害";
+                IDCtl.instance.addCardModel(cardModel);
 
-            CommandCtl.instance.addCommand(new DrawACardCommand(cardModel.id));
+                CommandCtl.instance.addCommand(new DrawACardCommand(cardModel.id));
+            }
+            else
+            {
+                var id = IDCtl.instance.getId();
+                var cardModel = new Card_DoubleHit();
+                cardModel.id = id;
+                IDCtl.instance.addCardModel(cardModel);
+
+                CommandCtl.instance.addCommand(new DrawACardCommand(cardModel.id));
+            }
+
+            
             
         }
     }

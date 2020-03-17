@@ -17,6 +17,10 @@ public class EffectAniLab : MonoBehaviour
         EffectAniLab._instance = this;
     }
 
-    public GameObject attack;
+    public GameObject blow;
+    public GameObject claw;
+    public GameObject absorb;
+    public GameObject arrowSpecial;
+
 
 }

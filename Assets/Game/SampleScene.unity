@@ -1567,7 +1567,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1926b0b75b0d5e418741c1aa9ad772f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 6954524511495419298, guid: 3032a55b5be0bd14fbbc56845ee4dc2f, type: 3}
+  blow: {fileID: 8245014998673038408, guid: 76c2c36b47b562b4bac0b7d29b2c559d, type: 3}
+  claw: {fileID: 6954524511495419298, guid: 3032a55b5be0bd14fbbc56845ee4dc2f, type: 3}
+  absorb: {fileID: 1192225914934260203, guid: 529b343534dbc8d49b3aad74ded67f01, type: 3}
+  arrowSpecial: {fileID: 1994677133080802253, guid: 8094feca30385c74bbcab5b3d088c66f,
+    type: 3}
 --- !u!114 &1533588846
 MonoBehaviour:
   m_ObjectHideFlags: 0
