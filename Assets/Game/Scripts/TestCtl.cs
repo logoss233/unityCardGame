@@ -11,6 +11,7 @@ public class TestCtl : MonoBehaviour
         var actorModel2 = new ActorModel();
         actorModel2.id = IDCtl.instance.getId();
         actorModel2.hp = 60;
+        actorModel2.maxHp = 60;
         IDCtl.instance.addActorModel(actorModel2);
 
      
@@ -25,14 +26,12 @@ public class TestCtl : MonoBehaviour
             if (Mathf.Floor(Random.value * 2) == 0)
             {
                 var id = IDCtl.instance.getId();
-                var cardModel = new CardModel();
+                var cardModel = new Card_Hit();
                 cardModel.id = id;
-                cardModel.name = "card" + id;
-                cardModel.damage = (int)Random.Range(3, 8);
-                cardModel.description = "造成" + cardModel.damage + "点伤害";
+              
                 IDCtl.instance.addCardModel(cardModel);
 
-                CommandCtl.instance.addCommand(new DrawACardCommand(cardModel.id));
+                CmdCtl.instance.addCommand(new DrawACardCmd(cardModel.id));
             }
             else
             {
@@ -41,7 +40,7 @@ public class TestCtl : MonoBehaviour
                 cardModel.id = id;
                 IDCtl.instance.addCardModel(cardModel);
 
-                CommandCtl.instance.addCommand(new DrawACardCommand(cardModel.id));
+                CmdCtl.instance.addCommand(new DrawACardCmd(cardModel.id));
             }
 
             

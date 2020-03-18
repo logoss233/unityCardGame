@@ -22,12 +22,12 @@ public class IDCtl : MonoBehaviour
     }
     
     //CardModel
-    Dictionary<int,CardModel> cardModelDict=new Dictionary<int,CardModel>();
-    public void addCardModel(CardModel cardModel)
+    Dictionary<int,Card> cardModelDict=new Dictionary<int,Card>();
+    public void addCardModel(Card cardModel)
     {
         this.cardModelDict.Add(cardModel.id, cardModel);
     }
-    public CardModel getCardModel(int id)
+    public Card getCardModel(int id)
     {
         return this.cardModelDict[id];
     }

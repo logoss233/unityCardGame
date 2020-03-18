@@ -17,11 +17,11 @@ public class Logic
     }
     
 
-    public void damage(SequenceCommand sc,ActorModel actorModel,int num)
+    public void damage(SequenceCmd sc,ActorModel actorModel,int num)
     {
         actorModel.hp -= num;
 
-        sc.add(new DamageCommand(actorModel.id, num, actorModel.hp));
+        sc.add(new DamageCmd(actorModel.id, num, actorModel.hp));
     }
 
 

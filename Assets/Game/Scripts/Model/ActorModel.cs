@@ -5,5 +5,6 @@ public class ActorModel
 {
     public int id;
     public int hp;
+    public int maxHp;
     
 }
