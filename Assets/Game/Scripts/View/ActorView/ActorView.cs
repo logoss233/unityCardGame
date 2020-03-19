@@ -9,7 +9,7 @@ public class ActorView : MonoBehaviour
     public static ActorView mousePosActor;
     public Image image;
     public int id;
-    public ActorModel actorModel;
+    public Actor actorModel;
     public HitEffect hitEffect;
     
     public void init(int id)
@@ -17,12 +17,11 @@ public class ActorView : MonoBehaviour
         image.material = Instantiate(image.material);
         this.id = id;
         IDCtl.instance.addActorView(this);
-        var actorModel = IDCtl.instance.getActorModel(id);
-        this.actorModel = actorModel;
+        this.actorModel = IDCtl.instance.getActorModel(id);
         this.hp = actorModel.hp;
         this.maxHp = actorModel.maxHp;
 
-        this.hpBar.init(this.hp,this.maxHp);
+        this.hpBar.init(this.hp,this.maxHp,this.actorModel.shield);
     }
    
     public void onPointEnter()
@@ -62,13 +61,23 @@ public class ActorView : MonoBehaviour
     {
        // this.hpText.text = this.hp.ToString();
     }
-    //=====受伤
-    public void damage(int dmg,int hpAfter)
+    /// <summary>
+    /// 受到伤害
+    /// </summary>
+    /// <param name="dmg">减血值</param>
+    /// <param name="hpAfter"></param>
+    /// <param name="shieldAfter"></param>
+    public void damage(int dmg,int hpAfter,int shieldAfter)
     {
         
         this.hp = hpAfter;
         this.hpBar.hp = this.hp;
-        JumpNumCtl.instance.jumpDamage(dmg, transform.position);
+        this.hpBar.shield = shieldAfter;
+        if (dmg > 0)
+        {
+            JumpNumCtl.instance.jumpDamage(dmg, transform.position);
+        }
+        
         hitEffect.play();
 
     }

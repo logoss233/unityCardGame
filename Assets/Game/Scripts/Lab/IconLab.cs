@@ -11,5 +11,5 @@ public class IconLab : MonoBehaviour
 
     public Sprite hit;
     public Sprite doubleHit;
-
+    public Sprite defend;
 }

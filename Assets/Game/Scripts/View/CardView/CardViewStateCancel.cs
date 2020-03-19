@@ -9,9 +9,12 @@ public class CardViewStateCancel :FsmStateAction
 
     public override void OnEnter()
     {
+
         var transform = Owner.transform;
         var cardView = Owner.GetComponent<CardView>();
-        
+
+        cardView.isShowYellowBackLight = false;
+
         transform.DOMove(cardView.targetPos, 0.25f).OnComplete(()=>
         {
             this.Finish();

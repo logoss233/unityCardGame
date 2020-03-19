@@ -15,6 +15,11 @@ public class CardViewStateIdle : FsmStateAction
         transform = Owner.transform;
 
         Owner.GetComponent<Canvas>().sortingOrder = cardView.orderInhand;
+
+    }
+    public override void OnExit()
+    {
+        
     }
     public override void OnUpdate()
     {
@@ -45,5 +50,8 @@ public class CardViewStateIdle : FsmStateAction
         cardView.transform.rotation = Quaternion.Lerp(cardView.transform.rotation, Quaternion.Euler(cardView.targetRotiton), 0.3f);
         //大小
         cardView.transform.localScale = Vector3.Lerp(cardView.transform.localScale, Vector3.one, 0.3f);
+
+        //黄光效果
+        cardView.isShowYellowBackLight = cardView.cardModel.canUse;
     }
 }

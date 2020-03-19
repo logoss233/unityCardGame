@@ -44,12 +44,12 @@ public class IDCtl : MonoBehaviour
     }
 
 
-    public Dictionary<int, ActorModel> actorModelDic = new Dictionary<int, ActorModel>();
-    public void addActorModel (ActorModel actorModel)
+    public Dictionary<int, Actor> actorModelDic = new Dictionary<int, Actor>();
+    public void addActorModel (Actor actorModel)
     {
         this.actorModelDic.Add(actorModel.id, actorModel);
     }
-    public ActorModel getActorModel(int id)
+    public Actor getActorModel(int id)
     {
         return this.actorModelDic[id];
     }

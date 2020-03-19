@@ -19,6 +19,10 @@ public class CardViewStateChoosed :FsmStateAction
     {
         
     }
+    public override void OnExit()
+    {
+        cardView.isShowYellowBackLight = false;
+    }
     public override void OnUpdate()
     {
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -32,9 +36,20 @@ public class CardViewStateChoosed :FsmStateAction
         }
         if (transform.position.y > HandView.instance.commitPoint.position.y)
         {
-            Fsm.Event(this.comfirm);
-            return;
+            if (cardView.cardModel.canUse)
+            {
+                Fsm.Event(this.comfirm);
+                return;
+            }
+            else
+            {
+                Fsm.Event(this.cancel);
+                HandView.instance.cancelChoose();
+            }
+            
         }
+        //黄光效果
+        cardView.isShowYellowBackLight = cardView.cardModel.canUse;
     }
     
 }

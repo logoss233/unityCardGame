@@ -21,6 +21,6 @@ public class EffectAniLab : MonoBehaviour
     public GameObject claw;
     public GameObject absorb;
     public GameObject arrowSpecial;
-
+    public GameObject defend;
 
 }

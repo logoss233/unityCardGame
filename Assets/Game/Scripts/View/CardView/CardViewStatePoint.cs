@@ -36,6 +36,8 @@ public class CardViewStatePoint : FsmStateAction
             Fsm.Event(mouseDown);
             return;
         }
-       
+
+        //黄光效果
+        cardView.isShowYellowBackLight = cardView.cardModel.canUse;
     }
 }

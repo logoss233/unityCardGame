@@ -13,7 +13,7 @@ public class CardView : MonoBehaviour
     public Text nameText;
     public Text descriptionText;
     public Image icon;
-
+    public Text costText;
     //======
     public PlayMakerFSM playerMakerFsm;
 
@@ -45,6 +45,7 @@ public class CardView : MonoBehaviour
         this.nameText.text = cardModel.name;
         this.descriptionText.text = cardModel.description;
         this.icon.sprite = cardModel.icon;
+        this.costText.text = cardModel.cost.ToString();
     }
 
     private void Update()
@@ -63,6 +64,40 @@ public class CardView : MonoBehaviour
         if (CardView.mousePosCard == this)
         {
             CardView.mousePosCard = null;
+        }
+    }
+
+    //绿色背光效果
+    public GameObject backLight;
+    private bool _isShowBackLight = false;
+    public bool isShowBackLight
+    {
+        get { return this._isShowBackLight; }
+        set
+        {
+            if (_isShowBackLight == value)
+            {
+                return;
+            }
+            this._isShowBackLight = value;
+            backLight.SetActive(value);
+        }
+    }
+
+    //黄色背光效果
+    public GameObject yellowBackLight;
+    private bool _isShowYellowBackLight = false;
+    public bool isShowYellowBackLight
+    {
+        get { return this._isShowYellowBackLight; }
+        set
+        {
+            if (this._isShowYellowBackLight == value)
+            {
+                return;
+            }
+            this._isShowYellowBackLight = value;
+            this.yellowBackLight.SetActive(value);
         }
     }
 }

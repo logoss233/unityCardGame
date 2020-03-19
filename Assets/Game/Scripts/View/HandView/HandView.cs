@@ -33,7 +33,7 @@ public class HandView : MonoBehaviour
 
     public void drawCard(int cardId)
     {
-        var cardViewGO = Instantiate(this.CardViewPrefab, cardPlace);
+        var cardViewGO = Instantiate(this.CardViewPrefab);
         var cardView = cardViewGO.GetComponent<CardView>();
         this.cardViewList.Add(cardView);
         cardView.init(cardId);
@@ -105,4 +105,6 @@ public class HandView : MonoBehaviour
     {
         this.controlCard = null;
     }
+
+    
 }

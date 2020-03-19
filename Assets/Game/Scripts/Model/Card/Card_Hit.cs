@@ -11,10 +11,10 @@ public class Card_Hit :Card
         this.description = "造成6点伤害";
         
     }
-    public override void effect(SequenceCmd sc, ActorModel actorModel)
+    public override void effect(SequenceCmd sc, Actor actorModel)
     {
         var timing = new SequenceCmd();
-        Logic.instance.damage(timing, actorModel, 6);
+        Logic.I.damage(timing, actorModel, 6);
         var ani = new AttackAni(actorModel.id,timing);
         sc.add(ani);
 
