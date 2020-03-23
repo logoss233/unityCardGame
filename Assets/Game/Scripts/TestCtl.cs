@@ -9,8 +9,47 @@ public class TestCtl : MonoBehaviour
     public ActorView actorView2;
     private void Start()
     {
+        for(var i = 0; i < 20; i++)
+        {
+            //初始化随机卡牌
+            var r = Mathf.Floor(Random.value * 3);
+            if (r == 0)
+            {
+                var id = IDCtl.instance.getId();
+                var cardModel = new Card_Hit();
+                cardModel.id = id;
+                IDCtl.instance.addCardModel(cardModel);
+                Player.I.drawDeck.Add(cardModel);
+              
+            }
+            else if (r == 1)
+            {
+                var id = IDCtl.instance.getId();
+                var cardModel = new Card_DoubleHit();
+                cardModel.id = id;
+                IDCtl.instance.addCardModel(cardModel);
+                Player.I.drawDeck.Add(cardModel);
+
+            }
+            else if (r == 2)
+            {
+                var id = IDCtl.instance.getId();
+                var cardModel = new Card_Defend();
+                cardModel.id = id;
+                IDCtl.instance.addCardModel(cardModel);
+                Player.I.drawDeck.Add(cardModel);
+            }
+        }
+
+
         Player.I.mana = 3;
         ManaUI.instance.mana = Player.I.mana;
+        for(var i = 0; i < 3; i++)
+        {
+            Player.I.drawACard(CmdCtl.I);
+        }
+
+
         var player = new Actor();
         player.id = IDCtl.instance.getId();
         player.hp = 30;
@@ -35,35 +74,7 @@ public class TestCtl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            //模拟抽卡
-            var r = Mathf.Floor(Random.value * 3);
-            if ( r== 0)
-            {
-                var id = IDCtl.instance.getId();
-                var cardModel = new Card_Hit();
-                cardModel.id = id;
-              
-                IDCtl.instance.addCardModel(cardModel);
-
-                CmdCtl.instance.addCommand(new DrawACardCmd(cardModel.id));
-            }
-            else if(r==1)
-            {
-                var id = IDCtl.instance.getId();
-                var cardModel = new Card_DoubleHit();
-                cardModel.id = id;
-                IDCtl.instance.addCardModel(cardModel);
-
-                CmdCtl.instance.addCommand(new DrawACardCmd(cardModel.id));
-            }
-            else if(r==2)
-            {
-                var id = IDCtl.instance.getId();
-                var cardModel = new Card_Defend();
-                cardModel.id = id;
-                IDCtl.instance.addCardModel(cardModel);
-                CmdCtl.instance.addCommand(new DrawACardCmd(cardModel.id));
-            }
+            Player.I.drawACard(CmdCtl.I);
         }
     }
 }

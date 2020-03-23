@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CmdCtl : MonoBehaviour
+public class CmdCtl : MonoBehaviour,IAdd
 {
-    public static CmdCtl instance;
+    public static CmdCtl I;
     private void Awake()
     {
-        CmdCtl.instance = this;
+        CmdCtl.I = this;
     }
-    public List<Cmd> commandList = new List<Cmd>();
+    public List<Cmd> cmdList = new List<Cmd>();
 
     
 
-    public void addCommand(Cmd command)
+    public void add(Cmd command)
     {
-        this.commandList.Add(command);
+        this.cmdList.Add(command);
         if (!this.isPlaying)
         {
             this.playCommand();
@@ -30,12 +30,12 @@ public class CmdCtl : MonoBehaviour
     //播放最前面的command
     public void playCommand()
     {
-        if (this.commandList.Count == 0)
+        if (this.cmdList.Count == 0)
         {
             return;
         }
-        var command = this.commandList[0];
-        this.commandList.RemoveAt(0);
+        var command = this.cmdList[0];
+        this.cmdList.RemoveAt(0);
         this.playingCommand = command;
         this.isPlaying = true;
         command.finishHandler = this.onCommandComplete;

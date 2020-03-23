@@ -36,7 +36,7 @@ public abstract class Card
         sc.add(new UpdateManaCmd(Player.I.mana));
 
         this.effect(sc,actorModel);
-        CmdCtl.instance.addCommand(sc);
+        CmdCtl.I.add(sc);
     }
     public abstract void effect(SequenceCmd sc, Actor actorModel);
 }

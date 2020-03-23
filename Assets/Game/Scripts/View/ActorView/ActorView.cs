@@ -57,6 +57,7 @@ public class ActorView : MonoBehaviour
     public HPBar hpBar;
     public int hp = 50;
     public int maxHp = 50;
+    public ParticleSystem hitParticle;
     private void Update()
     {
        // this.hpText.text = this.hp.ToString();
@@ -79,6 +80,7 @@ public class ActorView : MonoBehaviour
         }
         
         hitEffect.play();
+        hitParticle.Play();
 
     }
     

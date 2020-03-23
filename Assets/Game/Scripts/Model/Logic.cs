@@ -17,7 +17,7 @@ public class Logic
     }
     
 
-    public void damage(SequenceCmd sc,Actor actor,int dmg)
+    public void damage(IAdd sc,Actor actor,int dmg)
     {
         actor.shield -= dmg;
         dmg = 0;
@@ -30,7 +30,7 @@ public class Logic
 
         sc.add(new DamageCmd(actor.id, dmg, actor.hp,actor.shield));
     }
-    public void addShield(SequenceCmd sc,Actor actor,int num)
+    public void addShield(IAdd sc,Actor actor,int num)
     {
         actor.shield += num;
         sc.add(new AddShieldCmd(actor.id, actor.shield));

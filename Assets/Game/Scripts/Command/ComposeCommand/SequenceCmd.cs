@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SequenceCmd : Cmd
+public class SequenceCmd : Cmd,IAdd
 {
     public List<Cmd> commandList = new List<Cmd>();
     public int index = 0;
