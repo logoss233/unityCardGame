@@ -22,20 +22,24 @@ public class IDCtl : MonoBehaviour
     }
     
     //CardModel
-    Dictionary<int,Card> cardModelDict=new Dictionary<int,Card>();
-    public void addCardModel(Card cardModel)
+    Dictionary<int,Card> cardDict=new Dictionary<int,Card>();
+    public void addCard(Card card)
     {
-        this.cardModelDict.Add(cardModel.id, cardModel);
+        this.cardDict.Add(card.id, card);
     }
-    public Card getCardModel(int id)
+    public Card getCard(int id)
     {
-        return this.cardModelDict[id];
+        return this.cardDict[id];
     }
     
     //CardView
     Dictionary<int, CardView> cardViewDict = new Dictionary<int, CardView>();
     public void addCardView(CardView cardView)
     {
+        if (this.cardViewDict.ContainsKey(cardView.id))
+        {
+            this.cardViewDict.Remove(cardView.id);
+        }
         this.cardViewDict.Add(cardView.id, cardView);
     }
     public CardView getCardView(int id)

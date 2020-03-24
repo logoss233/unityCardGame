@@ -800,14 +800,12 @@ MonoBehaviour:
       actionData:
         actionNames:
         - CardViewStateUse
-        - CardViewStateNeedTarget
         customNames:
         - 
-        - 
-        actionEnabled: 0101
-        actionIsOpen: 0101
-        actionStartIndex: 0000000000000000
-        actionHashCodes: 00000000d8973105
+        actionEnabled: 01
+        actionIsOpen: 01
+        actionStartIndex: 00000000
+        actionHashCodes: 00000000
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams: []
@@ -830,20 +828,16 @@ MonoBehaviour:
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
-        stringParams:
-        - 
-        - 
+        stringParams: []
         byteData: 
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 1700000017000000
-        paramName:
-        - yesEvent
-        - noEvent
-        paramDataPos: 0000000001000000
-        paramByteDataSize: 0000000000000000
+        paramDataType: 
+        paramName: []
+        paramDataPos: 
+        paramByteDataSize: 
     - name: needTarget?
       description: 
       colorIndex: 0

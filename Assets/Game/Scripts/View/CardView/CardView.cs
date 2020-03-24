@@ -40,7 +40,7 @@ public class CardView : MonoBehaviour
     {
         this.id = id;
         IDCtl.instance.addCardView(this);
-        var cardModel = IDCtl.instance.getCardModel(id);
+        var cardModel = IDCtl.instance.getCard(id);
         this.cardModel = cardModel;
         this.nameText.text = cardModel.name;
         this.descriptionText.text = cardModel.description;

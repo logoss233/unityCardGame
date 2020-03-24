@@ -7,6 +7,7 @@ public class TestCtl : MonoBehaviour
 
     public ActorView playerActorView;
     public ActorView actorView2;
+    public EndTurnBtn endTurnbtn;
     private void Start()
     {
         for(var i = 0; i < 20; i++)
@@ -18,7 +19,7 @@ public class TestCtl : MonoBehaviour
                 var id = IDCtl.instance.getId();
                 var cardModel = new Card_Hit();
                 cardModel.id = id;
-                IDCtl.instance.addCardModel(cardModel);
+                IDCtl.instance.addCard(cardModel);
                 Player.I.drawDeck.Add(cardModel);
               
             }
@@ -27,7 +28,7 @@ public class TestCtl : MonoBehaviour
                 var id = IDCtl.instance.getId();
                 var cardModel = new Card_DoubleHit();
                 cardModel.id = id;
-                IDCtl.instance.addCardModel(cardModel);
+                IDCtl.instance.addCard(cardModel);
                 Player.I.drawDeck.Add(cardModel);
 
             }
@@ -36,7 +37,7 @@ public class TestCtl : MonoBehaviour
                 var id = IDCtl.instance.getId();
                 var cardModel = new Card_Defend();
                 cardModel.id = id;
-                IDCtl.instance.addCardModel(cardModel);
+                IDCtl.instance.addCard(cardModel);
                 Player.I.drawDeck.Add(cardModel);
             }
         }
@@ -44,11 +45,7 @@ public class TestCtl : MonoBehaviour
 
         Player.I.mana = 3;
         ManaUI.instance.mana = Player.I.mana;
-        for(var i = 0; i < 3; i++)
-        {
-            Player.I.drawACard(CmdCtl.I);
-        }
-
+       
 
         var player = new Actor();
         player.id = IDCtl.instance.getId();
@@ -68,6 +65,12 @@ public class TestCtl : MonoBehaviour
 
         playerActorView.init(player.id);
         this.actorView2.init(enemy.id);
+
+        //结束按钮
+        endTurnbtn.init();
+        
+
+        GameTurn.I.state = GameTurn.State.playerTurnBegin;
     }
     // Update is called once per frame
     void Update()
